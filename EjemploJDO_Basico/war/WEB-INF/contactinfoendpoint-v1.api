@@ -1,0 +1,193 @@
+{
+  "extends" : "thirdParty.api",
+  "abstract" : false,
+  "root" : "https://myapp.appspot.com/_ah/api",
+  "name" : "contactinfoendpoint",
+  "version" : "v1",
+  "defaultVersion" : false,
+  "discovery" : [ "PUBLIC" ],
+  "adapter" : {
+    "bns" : "https://myapp.appspot.com/_ah/spi",
+    "deadline" : 65.0,
+    "type" : "lily"
+  },
+  "auth" : {
+    "allowCookieAuth" : false
+  },
+  "frontendLimits" : {
+    "unregisteredUserQps" : -1,
+    "unregisteredQps" : -1,
+    "unregisteredDaily" : -1,
+    "rules" : [ ]
+  },
+  "cacheControl" : {
+    "type" : "no-cache",
+    "maxAge" : 0
+  },
+  "ownerDomain" : "jdo.com",
+  "ownerName" : "jdo.com",
+  "packagePath" : "server.bean",
+  "methods" : {
+    "contactinfoendpoint.updateContactInfo" : {
+      "path" : "contactinfo",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.jdo.server.bean.ContactInfoEndpoint.updateContactInfo",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "contactinfoendpoint.insertContactInfo" : {
+      "path" : "contactinfo",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.jdo.server.bean.ContactInfoEndpoint.insertContactInfo",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "contactinfoendpoint.listContactInfo" : {
+      "path" : "contactinfo",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.jdo.server.bean.ContactInfoEndpoint.listContactInfo",
+      "request" : {
+        "parameters" : {
+          "cursor" : {
+            "type" : "string",
+            "required" : false
+          },
+          "limit" : {
+            "type" : "int32",
+            "required" : false
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "contactinfoendpoint.removeContactInfo" : {
+      "path" : "contactinfo/{id}",
+      "httpMethod" : "DELETE",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.jdo.server.bean.ContactInfoEndpoint.removeContactInfo",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "empty"
+      }
+    },
+    "contactinfoendpoint.getContactInfo" : {
+      "path" : "contactinfo/{id}",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.jdo.server.bean.ContactInfoEndpoint.getContactInfo",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    }
+  },
+  "descriptor" : {
+    "schemas" : {
+      "ContactInfo" : {
+        "id" : "ContactInfo",
+        "type" : "object",
+        "properties" : {
+          "key" : {
+            "type" : "string",
+            "format" : "int64"
+          },
+          "streetAddress" : {
+            "type" : "string"
+          }
+        }
+      },
+      "CollectionResponse_ContactInfo" : {
+        "id" : "CollectionResponse_ContactInfo",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "ContactInfo"
+            }
+          },
+          "nextPageToken" : {
+            "type" : "string"
+          }
+        }
+      }
+    },
+    "methods" : {
+      "com.jdo.server.bean.ContactInfoEndpoint.updateContactInfo" : {
+        "request" : {
+          "$ref" : "ContactInfo"
+        },
+        "response" : {
+          "$ref" : "ContactInfo"
+        }
+      },
+      "com.jdo.server.bean.ContactInfoEndpoint.insertContactInfo" : {
+        "request" : {
+          "$ref" : "ContactInfo"
+        },
+        "response" : {
+          "$ref" : "ContactInfo"
+        }
+      },
+      "com.jdo.server.bean.ContactInfoEndpoint.listContactInfo" : {
+        "response" : {
+          "$ref" : "CollectionResponse_ContactInfo"
+        }
+      },
+      "com.jdo.server.bean.ContactInfoEndpoint.removeContactInfo" : {
+      },
+      "com.jdo.server.bean.ContactInfoEndpoint.getContactInfo" : {
+        "response" : {
+          "$ref" : "ContactInfo"
+        }
+      }
+    }
+  }
+}
